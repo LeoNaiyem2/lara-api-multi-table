@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -19,7 +21,9 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-       return view('pages.invoices.create',compact());
+        $patients= Patient::all();
+        $invoices= Invoice::all();
+       return view('pages.invoices.create',compact('patients','invoices'));
     }
 
     /**
